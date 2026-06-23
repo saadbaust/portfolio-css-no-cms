@@ -1,2 +1,120 @@
-# portfolio-css-no-cms
+# Saad Ahmed — Academic Portfolio
 
+Personal academic portfolio website for **Saad Ahmed**, Lecturer at the Department of CSE, Bangladesh Army University of Science and Technology (BAUST).
+
+🌐 **Live site:** [saadbaust.github.io](https://saadbaust.github.io/)
+
+---
+
+## Files in This Project
+
+| File | What it does |
+|---|---|
+| `index.html` | Main portfolio page (home) |
+| `gallery.html` | Photo gallery page — **hidden from search engines** |
+| `style.css` | All visual styling for both pages |
+| `data.js` | Your publications, experience, education, skills — edit this to update content |
+| `publications.bib` | Standalone BibTeX backup of all publications — not loaded by the site, useful for submitting to reference managers or sharing with collaborators |
+| `sitemap.xml` | Tells search engines which pages to index (only the home page) |
+| `robots.txt` | Blocks search engines from crawling the gallery and gallery images |
+| `images/` | Folder for your photos and stat images |
+| `images/s-logo.png` | Site favicon — the small icon shown in browser tabs |
+
+---
+
+## Using This as Your Own Portfolio Template
+
+This template is designed so that **you only need to edit one file** to update almost everything on the site — `data.js`. Here's how to make it yours, step by step.
+
+### Step 1 — Get the files onto your computer
+
+Download or clone this repository to your computer. You'll see the files listed in the table above.
+
+### Step 2 — Replace the profile photo and favicon
+
+**Profile photo:** Go into the `images/` folder and replace `saadahmed.png` with your own photo. Keep the filename the same, or remember to update it in `index.html` if you use a different name. A square or portrait photo works best.
+
+**Favicon:** Replace `images/s-logo.png` with your own logo or initials icon. Keep the filename the same, or update the `<link rel="icon">` tag in both `index.html` and `gallery.html` if you use a different name. A square image of at least 64×64 px works best.
+
+### Step 3 — Update your personal info in `index.html`
+
+Open `index.html` in any text editor (Notepad, VS Code, etc.) and find the following things to change:
+
+- **Your name** — appears in the `<h1>` tag and a few meta tags at the top
+- **Your job title and institution** — just below your name
+- **Your "About me" paragraph** — inside the `academic-summary` box
+- **Your CV link** — replace the Google Drive link with your own
+- **Your social media links** — GitHub, LinkedIn, Google Scholar, ResearchGate, ORCID, IEEE Xplore, YouTube
+- **Your contact details** — phone number and email address
+- **Your website URL** — search for `saadbaust.github.io` and replace with your own URL throughout the file
+
+### Step 4 — Update your content in `data.js`
+
+This is the main file to edit. Open it and update four things:
+
+**Google Scholar stats** — update your citation count, h-index, and i10-index. You can find these on your Google Scholar profile page.
+
+**Publications** — add or remove entries in the `myPapers` list. Each paper uses BibTeX format, which you can copy directly from Google Scholar or IEEE Xplore by clicking "Cite" on any paper. The site automatically separates journals (`@article`) and conferences (`@INPROCEEDINGS`) for you.
+
+To keep a clean backup of your papers outside the site, paste the same BibTeX into `publications.bib` as well. That file is not loaded by the website but is handy for submitting to reference managers like Zotero or Mendeley.
+
+**Experience, education, skills, certifications** — all of these are in the `academicInfo` section. Just edit the text to match your own background. You can add or remove items by copying the pattern you see.
+
+### Step 5 — Add gallery photos (optional)
+
+Photos live in two folders — `images/events/` and `images/memories/` — and the gallery is split into matching **Events** and **Memories** sections.
+
+To add a photo, drop the image file into the right folder, then open `gallery.html` and add one block inside the correct section's `<div class="masonry-grid">`:
+
+```html
+<figure class="masonry-item">
+  <div class="masonry-thumb"><img src="images/events/your-photo.webp" alt="Short description for accessibility" loading="lazy" /></div>
+  <figcaption class="masonry-caption">Caption shown under the photo</figcaption>
+</figure>
+```
+
+- The `alt` text is for screen readers — keep it descriptive.
+- The `<figcaption>` is the visible caption (and it also shows in the lightbox).
+- If a filename contains spaces, write them as `%20` in the `src` (e.g. `bauste%20(1).webp`).
+- After adding photos, bump the count number in that section's `<span class="gallery-cat-count">` heading so it stays accurate.
+
+### Step 6 — Update the SEO files
+
+Open `sitemap.xml` and `robots.txt` and replace `saadbaust.github.io` with your own website URL. Also update the `lastmod` date in `sitemap.xml` whenever you make content changes.
+
+In `index.html`, search for `saadbaust.github.io` in the meta tags at the top and replace those with your own URL.
+
+Note: **the gallery page is intentionally excluded from search engines.** This is controlled in three places and they must all stay consistent:
+- `robots.txt` — `Disallow: /gallery.html` (and image folders blocked for Googlebot-Image)
+- `gallery.html` — `<meta name="robots" content="noindex, nofollow, noimageindex">`
+- `sitemap.xml` — `gallery.html` is not listed (only indexable pages belong in a sitemap)
+
+If you ever want to make the gallery publicly discoverable, you would need to reverse all three of these.
+
+### Step 7 — Publish it
+
+The easiest free way to host this is **GitHub Pages**:
+
+1. Create a free account at [github.com](https://github.com) if you don't have one
+2. Create a new repository named `yourusername.github.io`
+3. Upload all your files into it
+4. Go to the repository Settings → Pages → set source to the main branch
+5. Your site will be live at `https://yourusername.github.io` within a few minutes
+
+---
+
+## Keeping It Updated
+
+Whenever you publish a new paper, open `data.js`, paste in the BibTeX into the `myPapers` array, and push the changes. Optionally paste it into `publications.bib` too for your own records. The site updates automatically. Same for adding a new job or updating your citation count — it all lives in `data.js`.
+
+---
+
+## Dark Mode
+
+The site automatically switches to a dark theme if the visitor's device is set to dark mode. No extra setup needed.
+
+---
+
+## Credits
+
+Built and designed by [Saad Ahmed](https://saadbaust.github.io/). Free to use as a personal academic portfolio template.
